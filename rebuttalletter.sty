@@ -1,0 +1,44 @@
+% LaTeX rebuttal letter package.
+%
+% Copyright 2020 Yusuke Izawa
+%
+% Based on the example by Friedemann Zenke, fzenke.net, and
+% original style is made by Dirk Eddelbuettel, Fran and others from
+% https://tex.stackexchange.com/questions/2317/latex-style-or-macro-for-detailed-response-to-referee-report
+%
+% Licensed under cc by-sa 3.0 with attribution required.
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{rebuttalletter}[2020/09/08 Rebuttal Letter]
+
+\RequirePackage{fullpage}
+\RequirePackage{xifthen} % package needed for optional arguments
+
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% This refines the format of how the reviewer/point reference will appear.
+\renewcommand{\thepoint}{P\,\thereviewer.\arabic{point}}
+
+% command declarations for reviewer points and our responses
+\newcommand{\reviewersection}{
+  \stepcounter{reviewer} \bigskip \hrule \section*{Reviewer \thereviewer}}
+
+\newenvironment{point}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~Point~\thepoint} } ---\ }
+   {\par }
+
+\newcommand{\shortpoint}[1]{\refstepcounter{point}  \bigskip \noindent
+    {\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
+
+\newenvironment{reply}
+   {\medskip \noindent \begin{sf}\textbf{Reply}:\  }
+   {\medskip \end{sf}}
+
+\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+    \ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
+    \medskip \end{sf}}
+
+\endinput

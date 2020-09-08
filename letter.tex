@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum} % to generate some filler text
+\usepackage{rebuttalletter}
+
+% import Eq and Section references from the main manuscript where needed
+% \usepackage{xr}
+% \externaldocument{manuscript}
+
+% package needed for optional arguments
+\usepackage{xifthen}
+
+\begin{document}
+
+\section*{Response to the reviewers}
+% General intro text goes here
+We thank the reviewers for their critical assessment of our work.
+In the following we address their concerns point by point.
+
+% Let's start point-by-point with Reviewer 1
+\reviewersection
+
+% Point one description
+\begin{point}
+  \lipsum[1]
+  \label{pt:foo}
+\end{point}
+
+% Our reply
+\begin{reply}
+  We agree with the reviewer on this important point. This is what we did to
+  fix it.
+  \lipsum[2]
+\end{reply}
+
+\begin{point}
+  Reviewer \thereviewer's second point.
+  \label{pt:bar}
+\end{point}
+
+\begin{reply}
+  And our reply to it.
+\end{reply}
+
+\subsection*{Minor}
+
+% Use the short-hand macros for one-liners.
+\shortpoint{ Typo in line xy. }
+\shortreply{ Fixed.}
+
+% Begin a new reviewer section
+\reviewersection
+
+\begin{point}
+  This is the first point of Reviewer \thereviewer. With some more words foo
+  bar foo bar ...
+\end{point}
+
+\begin{reply}
+  Our reply to it with reference to one of our points above using the \LaTeX's
+  label/ref system (see also \ref{pt:foo}).
+\end{reply}
+
+\end{document}
