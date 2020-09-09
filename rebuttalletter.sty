@@ -18,26 +18,47 @@
 \setcounter{reviewer}{0}
 \newcounter{point}[reviewer]
 \setcounter{point}{0}
+\newcounter{metapoint}
+\setcounter{metapoint}{0}
 
 % This refines the format of how the reviewer/point reference will appear.
 \renewcommand{\thepoint}{P\,\thereviewer.\arabic{point}}
 
+\renewcommand{\themetapoint}{P\,\arabic{metapoint}}
+
 % command declarations for reviewer points and our responses
-\newcommand{\reviewersection}{
+\newcommand{\reviewersection}{%
   \stepcounter{reviewer} \bigskip \hrule \section*{Reviewer \thereviewer}}
 
+\newcommand{\editorsection}{%
+  \bigskip \hrule \section*{Editor}}
+
+\newcommand{\minorsection}{%
+  \bigskip \subsection*{Minor}}
+
+
+\newenvironment{metapoint}
+{\refstepcounter{metapoint} \bigskip \noindent
+  {\textbf{Editor~Point~\themetapoint}} ---\ }
+{\par }
+
+\newcommand{\responsetitle}{%
+  \section*{Response to the reviewers}}
+
 \newenvironment{point}
-   {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~Point~\thepoint} } ---\ }
-   {\par }
+{\refstepcounter{point} \bigskip \noindent
+  {\textbf{Reviewer~Point~\thepoint} } ---\ }
+{\par }
 
 \newcommand{\shortpoint}[1]{\refstepcounter{point}  \bigskip \noindent
-    {\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
+  {\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
 
-\newenvironment{reply}
-   {\medskip \noindent \begin{sf}\textbf{Reply}:\  }
-   {\medskip \end{sf}}
+\newenvironment{reply}{%
+  \medskip \noindent \begin{sf}\textbf{Reply}:\  }
+  {\medskip \end{sf}}
 
-\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+\newcommand{\shortreply}[2][]{%
+  \medskip \noindent \begin{sf}\textbf{Reply}:\  #2
     \ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
     \medskip \end{sf}}
 
