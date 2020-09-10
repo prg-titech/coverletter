@@ -13,6 +13,9 @@
 \RequirePackage{fullpage}
 \RequirePackage{xifthen} % package needed for optional arguments
 
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+
 % define counters for reviewers and their points
 \newcounter{reviewer}
 \setcounter{reviewer}{0}
@@ -31,31 +34,30 @@
   \stepcounter{reviewer} \bigskip \hrule \section*{Reviewer \thereviewer}}
 
 \newcommand{\editorsection}{%
-  \bigskip \hrule \section*{Editor}}
+  \medskip \hrule \section*{Editor}}
 
 \newcommand{\minorsection}{%
-  \bigskip \subsection*{Minor}}
-
+  \medskip \subsection*{Minor}}
 
 \newenvironment{metapoint}
-{\refstepcounter{metapoint} \bigskip \noindent
-  {\textbf{Editor~Point~\themetapoint}} ---\ }
+{\refstepcounter{metapoint} \smallskip \noindent
+  \flushleft{\textbf{Editor~Point~\themetapoint} ---\ } }
 {\par }
 
 \newcommand{\responsetitle}{%
   \section*{Response to the reviewers}}
 
 \newenvironment{point}
-{\refstepcounter{point} \bigskip \noindent
-  {\textbf{Reviewer~Point~\thepoint} } ---\ }
+{\refstepcounter{point} \smallskip \noindent
+  \flushleft{\textbf{Reviewer~Point~\thepoint} ---\ } }
 {\par }
 
 \newcommand{\shortpoint}[1]{\refstepcounter{point}  \bigskip \noindent
-  {\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
+  \flushleft{\textbf{Reviewer~Point~\thepoint} ---~ }#1\par }
 
 \newenvironment{reply}{%
-  \medskip \noindent \begin{sf}\textbf{Reply}:\  }
-  {\medskip \end{sf}}
+  \smallskip \noindent \begin{sf}\textbf{Reply}:\  }
+  {\smallskip \end{sf}}
 
 \newcommand{\shortreply}[2][]{%
   \medskip \noindent \begin{sf}\textbf{Reply}:\  #2
